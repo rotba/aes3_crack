@@ -21,8 +21,9 @@ public class Main {
     private static void encrypt(ArgsParser parser) throws IOException {
         AES3 aes3 = AES3Factory.create();
         IOManager io = IOManagerFactory.create();
-        byte[] plaintext = io.read(parser.getPathToInputFile());
-        byte[] cypertext = aes3.encrypt(plaintext);
+	    byte[] plaintext = io.read(parser.getPathToInputFile());
+	    byte[] keys = io.read(parser.getPathToKeys());
+        byte[] cypertext = aes3.encrypt(plaintext, keys);
         io.write(parser.getPathToOutputFile(), cypertext);
     }
 
@@ -30,7 +31,8 @@ public class Main {
         AES3 aes3 = AES3Factory.create();
         IOManager io = IOManagerFactory.create();
         byte[] plaintext = io.read(parser.getPathToInputFile());
-        byte[] cypertext = aes3.decrypt(plaintext);
+	    byte[] keys = io.read(parser.getPathToKeys());
+        byte[] cypertext = aes3.decrypt(plaintext, keys);
         io.write(parser.getPathToOutputFile(), cypertext);
     }
 
