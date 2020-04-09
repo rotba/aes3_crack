@@ -259,6 +259,27 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="args_parsing in aes3_crack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aes3_crack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="args_parsing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="args_parsing" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.args_parsing in aes3_crack" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>

@@ -5,7 +5,7 @@ public class ArgParserImpl implements ArgsParser {
     private String[] args;
     @Override
     public void parse(String[] args) {
-
+        this.args= args;
     }
 
     @Override
