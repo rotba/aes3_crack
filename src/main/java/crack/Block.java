@@ -13,7 +13,7 @@ public class Block {
         for (int i = 0; i < 4; i++) {
             byte[] colContent = new byte[4];
             for (int j = 0; j <colContent.length ; j++) {
-                colContent[j] =copyOfRange[i +j*4];
+                colContent[j] =copyOfRange[4*i +j];
             }
             cols[i] = new Column(colContent);
         }
@@ -52,12 +52,12 @@ public class Block {
         byte[] ans = new byte[getHeigth()*getWidth()];
         for (int i = 0; i < getHeigth(); i++) {
             for (int j = 0; j < getWidth(); j++) {
-                ans[i+4*j] = cols[j].getByte(i);
+                ans[4*i+j] = cols[j].getByte(i);
             }
         }
         for (int i = 0; i < getWidth(); i++) {
             for (int j = 0; j < getHeigth(); j++) {
-                ans[i+4*j] = cols[i].getByte(j);
+                ans[4*i+j] = cols[i].getByte(j);
             }
         }
         return ans;
