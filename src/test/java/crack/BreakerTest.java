@@ -71,23 +71,6 @@ public class BreakerTest {
         );
     }
 
-    @Test
-    public void test4() throws IOException {
-        test(
-                InputsGenerator.pt4(),
-                InputsGenerator.ct4(),
-                InputsGenerator.k4()
-        );
-    }
-
-    @Test
-    public void test5() throws IOException {
-        test(
-                InputsGenerator.pt5(),
-                InputsGenerator.ct5(),
-                InputsGenerator.k5()
-        );
-    }
 
     private void test(byte[] inputPlaintext, byte[] inputCiphertext, byte[] keys) throws IOException {
         byte[] actual = out.crack(inputPlaintext, inputCiphertext);
