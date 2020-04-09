@@ -21,15 +21,15 @@ public class AES3Impl implements AES3 {
 	private byte[] join(byte[][][] blocks) {
 		byte[] result = new byte[blocks.length* BLOCKSIZE];
 		for (int i = 0; i < blocks.length* BLOCKSIZE; i++){
-			result[i] = blocks[i/ BLOCKSIZE][(i% BLOCKSIZE )/ BLOCKLENGTH][(i% BLOCKSIZE )% BLOCKLENGTH];
+			result[i] = blocks[i/ BLOCKSIZE] [(i% BLOCKSIZE )% BLOCKLENGTH] [(i% BLOCKSIZE )/ BLOCKLENGTH];
 		}
 		return result;// TODO: test
 	}
 
-	private byte[][][] split(byte[] text) {
+	byte[][][] split(byte[] text) {
 		byte[][][] blocks = new byte[text.length/ BLOCKSIZE][BLOCKLENGTH][BLOCKLENGTH];
 		for (int i = 0; i < text.length; i++){
-			blocks[i/ BLOCKSIZE][(i% BLOCKSIZE )/ BLOCKLENGTH][(i% BLOCKSIZE )% BLOCKLENGTH] = text[i];
+			blocks[i/ BLOCKSIZE] [(i% BLOCKSIZE )% BLOCKLENGTH] [(i% BLOCKSIZE )/ BLOCKLENGTH] = text[i];
 		}
 		return blocks;// TODO: test
 	}
@@ -38,7 +38,7 @@ public class AES3Impl implements AES3 {
 		byte[][][] blocks = split(cyphertext);
 		for (byte[][] key : reverse(split(keys))){
 			for (byte[][] block : blocks){
-				shiftColumns(block);
+				shiftBackColumns(block);
 				xorText(block, key);
 			}
 		}
@@ -58,12 +58,12 @@ public class AES3Impl implements AES3 {
 		blocks[j] = tmp;
 	}
 
-	private void shiftColumns(byte[][] text){
+	void shiftColumns(byte[][] text){
 		int len = text.length;
 		byte[][] clone = cloneArray(text, len);
 		for (int i = 0; i < len*len; i++){
 			text[i/len][i%len] = clone[(i/len+i)%len][i%len];
-		}// TODO: test
+		}
 	}
 
 	private byte[][] cloneArray(byte[][] text, int len) {
@@ -74,15 +74,15 @@ public class AES3Impl implements AES3 {
 		return clone;
 	}
 
-	private void shiftBackColumns(byte[][] text) {
+	void shiftBackColumns(byte[][] text) {
 		int len = text.length;
 		byte[][] clone = cloneArray(text, len);
 		for (int i = 0; i < len * len; i++){
 			text[i / len][i % len] = clone[( len + i / len - i%len ) % len][i % len];
-		}// TODO: test
+		}
 	}
 
-	private void xorText(byte[][] text, byte[][] key){// TODO: test
+	void xorText(byte[][] text, byte[][] key){// TODO: test
 		for (int i = 0; i < BLOCKSIZE; i++){
 			text[i/ BLOCKLENGTH][i% BLOCKLENGTH] ^= key[i/ BLOCKLENGTH][i% BLOCKLENGTH];
 		}

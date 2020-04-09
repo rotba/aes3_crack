@@ -1,4 +1,4 @@
-package crack;
+package testUtils;
 
 import org.apache.commons.lang.ArrayUtils;
 
@@ -171,6 +171,34 @@ public class InputsGenerator {
                 ArrayUtils.addAll(
                         k_zeros(),
                         k_zeros()
+                )
+        );
+    }
+
+    public static byte[] ascending() {
+        return new byte[]{
+                1, 2, 3, 4,
+                5, 6, 7, 8,
+                9, 10, 11, 12,
+                13, 14, 15, 16
+        };
+    }
+
+    public static byte[] shifted() {
+        return new byte[]{
+                1, 6, 11, 16,
+                5, 10, 15, 4,
+                9, 14, 3, 8,
+                13, 2, 7, 12
+        };
+    }
+
+    public static byte[] k6() {
+        return ArrayUtils.addAll(
+                ascending(),
+                ArrayUtils.addAll(
+                        ascending(),
+                        ascending()
                 )
         );
     }
