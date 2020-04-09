@@ -38,8 +38,8 @@ public class AES3Impl implements AES3 {
 		byte[][][] blocks = split(cyphertext);
 		for (byte[][] key : reverse(split(keys))){
 			for (byte[][] block : blocks){
-				shiftBackColumns(block);
 				xorText(block, key);
+				shiftBackColumns(block);
 			}
 		}
 		return join(blocks);//TODO: test
