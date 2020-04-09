@@ -6,6 +6,7 @@ import io.IOManager;
 import io.IOManagerFactory;
 import org.junit.Before;
 import org.junit.Test;
+import testUtils.InputsGenerator;
 
 import java.io.IOException;
 import java.nio.file.Paths;
