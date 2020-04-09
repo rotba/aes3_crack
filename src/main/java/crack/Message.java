@@ -8,8 +8,8 @@ public class Message {
     public Message(byte[] bytes){
         assert bytes.length%16==0;
         blocks = new Block[bytes.length/16];
-        for (int i = 0; i < blocks.length; i+=16) {
-            blocks[i] = new Block(Arrays.copyOfRange(bytes, i, i+16));
+        for (int i = 0; i < blocks.length; i++) {
+            blocks[i] = new Block(Arrays.copyOfRange(bytes, i*16, i*16+16));
         }
     }
 

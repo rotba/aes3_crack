@@ -21,7 +21,7 @@ public class BreakerImpl implements Breaker{
             for (int j = 0; j <sc3PtFirstBlock.getHeigth() ; j++) {
                 Solution solution = solve(
                         sc3PtFirstBlock.getByte(i,j),
-                        ctFirstBlock.getByte(i,j)
+                            ctFirstBlock.getByte(i,j)
                 );
                 sc2K1.setByte(solution.getK1Byte(),i,j);
                 sc1K2.setByte(solution.getK2Byte(),i,j);
