@@ -1,55 +1,65 @@
 package args_parsing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ArgParserImpl implements ArgsParser {
 
-    private String[] args;
+    private List<String> args;
     @Override
     public void parse(String[] args) {
-        this.args= args;
+        this.args=  new ArrayList<>(Arrays.asList(args));
     }
 
     @Override
     public boolean shouldEncrypt() {
-        return false;
+        return args.contains("-e");
     }
 
     @Override
     public boolean shouldDecrypt() {
-        return false;
+        return args.contains("-d");
     }
 
     @Override
     public boolean shouldBreak() {
-        return false;
+        return args.contains("-b");
     }
 
     @Override
     public String getPathToPlaintextMsg() {
-        return null;
+        int i = args.indexOf("-m");
+        return args.get(i+1);
     }
 
     @Override
     public String getPathToCyphertextMsg() {
-        return null;
+        int i = args.indexOf("-c");
+        return args.get(i+1);
     }
 
     @Override
     public String getPathToKeys() {
-        return null;
+        int i = args.indexOf("-k");
+        return args.get(i+1);
     }
 
     @Override
     public String getPathToKeysFound() {
-        return null;
+        int i = args.indexOf("-o");
+        return args.get(i+1);
     }
 
     @Override
     public String getPathToInputFile() {
-        return null;
+        int i = args.indexOf("-i");
+        return args.get(i+1);
     }
 
     @Override
     public String getPathToOutputFile() {
-        return null;
+        int i = args.indexOf("-o");
+        return args.get(i+1);
     }
 }

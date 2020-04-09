@@ -30,16 +30,13 @@ public class ArgParserTest1 {
         assertEquals(false,out.shouldBreak());
     }
 
-    @Test
-    public void getPathToPlaintextMsg() {
-        assertEquals("",out.shouldBreak());
-    }
+
 
 
 
     @Test
     public void getPathToKeys() {
-        assertEquals("key.txt",out.getPathToInputFile());
+        assertEquals("key.txt",out.getPathToKeys());
     }
 
     @Test

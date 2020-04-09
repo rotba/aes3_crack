@@ -39,4 +39,9 @@ public class ArgParserTest2 {
     public void getPathToOutputFile() {
         assertEquals("foo_out.txt",out.getPathToOutputFile());
     }
+
+    @Test
+    public void getPathToKeysFound() {
+        assertEquals("foo_out.txt",out.getPathToKeysFound());
+    }
 }
