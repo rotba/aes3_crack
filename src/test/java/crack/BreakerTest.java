@@ -95,7 +95,7 @@ public class BreakerTest {
     }
 
     private void assertEnciptsTo(byte[] plaintext, byte[] ciphertext, byte[] actualKeys, byte[] origKeys) throws IOException {
-//        assertArrayEquals(ciphertext, aes3.encrypt(plaintext,actualKeys));
+        assertArrayEquals(ciphertext, aes3.encrypt(plaintext,actualKeys));
         assertArrayEquals(ciphertext, aes3.encrypt(plaintext,origKeys));
     }
 }
