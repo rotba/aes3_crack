@@ -75,10 +75,16 @@ public class BreakerTest {
     private void test(byte[] inputPlaintext, byte[] inputCiphertext, byte[] keys) throws IOException {
         byte[] actual = out.crack(inputPlaintext, inputCiphertext);
         assertEnciptsTo(inputPlaintext, inputCiphertext, actual, keys);
+        assertDecriptsTo(inputPlaintext, inputCiphertext, actual, keys);
     }
 
     private void assertEnciptsTo(byte[] plaintext, byte[] ciphertext, byte[] actualKeys, byte[] origKeys) throws IOException {
         assertArrayEquals(ciphertext, aes3.encrypt(plaintext,actualKeys));
         assertArrayEquals(ciphertext, aes3.encrypt(plaintext,origKeys));
+    }
+
+    private void assertDecriptsTo(byte[] plaintext, byte[] ciphertext, byte[] actualKeys, byte[] origKeys) throws IOException {
+        assertArrayEquals(plaintext, aes3.decrypt(ciphertext,actualKeys));
+        assertArrayEquals(plaintext, aes3.decrypt(ciphertext,origKeys));
     }
 }

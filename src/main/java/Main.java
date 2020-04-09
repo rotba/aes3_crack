@@ -30,9 +30,9 @@ public class Main {
     private static void decrypt(ArgsParser parser) throws IOException {
         AES3 aes3 = AES3Factory.create();
         IOManager io = IOManagerFactory.create();
-        byte[] plaintext = io.read(parser.getPathToInputFile());
+        byte[] input = io.read(parser.getPathToInputFile());
 	    byte[] keys = io.read(parser.getPathToKeys());
-        byte[] cypertext = aes3.decrypt(plaintext, keys);
+        byte[] cypertext = aes3.decrypt(input, keys);
         io.write(parser.getPathToOutputFile(), cypertext);
     }
 
